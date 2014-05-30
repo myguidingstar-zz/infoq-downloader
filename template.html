@@ -1,0 +1,60 @@
+<html>
+<head>
+<title>{{title}}</title>
+<link href="assets/mediaelementplayer.min.css" rel="stylesheet" type="text/css"/>
+  <style>
+    #player_video, #slideshow_player {
+      width: 460px;
+      height: 420px;
+      max-width: 460px;
+      max-height: 420px;
+      padding: 4px;
+    }
+
+    #slideshow_player img {
+      max-width: 460px;
+      max-height: 420px;
+    }
+  </style>
+</head>
+<body>
+
+<div style="display: inline-block">
+  <div id="player_video" style="float:left; width: 460px; height: 420px;"></div>
+  <div id="slideshow_player" style="float:left; width: 460px; height: 420px;"></div>
+</div>
+<br>
+<div id="chapter" style="float:left"></div>
+
+<script type="text/javascript" src="assets/jquery.js"></script>
+<script type="text/javascript" src="assets/swfobject-2.2.js"></script>
+<script type="text/javascript" src="assets/presentz-1.2.2.min.js"></script>
+<script type="text/javascript" src="assets/mediaelement-and-player.min.js"></script>
+<script type="text/javascript">
+  var presentation;
+  var presentz;
+
+  function initPresentz(pres) {
+    presentation = pres;
+
+    presentz = new Presentz("#player_video", "360x294", "#slideshow_player", "595x447")
+    presentz.init(presentation);
+    presentz.on("slidechange", function(prevChap, prevSlide, chap, slide) {
+      $("#chapter").text("At chapter " + chap + ", slide " + slide);
+    });
+    presentz.changeChapter(0, 0, true, function(err) {
+      if (err) {
+        alert(err);
+      }
+    });
+  };
+
+  var presentationData =
+{{presentation-data}}
+;
+
+  initPresentz(presentationData);
+
+</script>
+</body>
+</html>
