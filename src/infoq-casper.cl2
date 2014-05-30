@@ -93,14 +93,14 @@ to be included in local presentz HTML file."
   [slide-url title]
   (str "slides/" (url->name slide-url)))
 
-(defn video->aria2-command
-  "Local path for video file."
+(defn video->aria2-lines
+  "Lines to include in arial2c input file to download a given video."
   [video-url title]
   (str video-url "
   dir=" title))
 
-(defn slide->aria2-command
-  "Aria2 command for slide image."
+(defn slide->aria2-lines
+  "Lines to include in arial2c input file to download a given slide."
   [slide-url title]
   (str "http://www.infoq.com" slide-url "
   dir=" title "/slides"))
@@ -109,8 +109,8 @@ to be included in local presentz HTML file."
   (console.log "Generating aria2.txt...")
   (-> (for [[i slide] slide-urls
             :let [id (+ 1 i)]]
-        (slide->aria2-command slide title))
-      (conj (video->aria2-command video-url title))
+        (slide->aria2-lines slide title))
+      (conj (video->aria2-lines video-url title))
       (.join "\n")
       (#(spit (str title "/aria2.txt") %))))
 
