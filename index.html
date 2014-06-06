@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Infoq-downloader by myguidingstar</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">Infoq-downloader</h1>
+        <p class="header">Download talks from Infoq to view offline.</p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/myguidingstar/infoq-downloader/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/myguidingstar/infoq-downloader/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/myguidingstar/infoq-downloader">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/myguidingstar">myguidingstar</a></p>
+
+
+      </header>
+      <section>
+        <h1>
+<a name="infoq-downloader" class="anchor" href="#infoq-downloader"><span class="octicon octicon-link"></span></a>InfoQ-downloader</h1>
+
+<p>Download talks from Infoq to view offline.</p>
+
+<h2>
+<a name="prerequisites" class="anchor" href="#prerequisites"><span class="octicon octicon-link"></span></a>Prerequisites</h2>
+
+<p>You will need <a href="http://casperjs.org">CasperJS</a> with either <a href="http://phantomjs.org">PhantomJS</a> or <a href="http://slimerjs.org">SlimerJS</a> above installed.
+Also, <a href="http://aria2.sourceforge.net">Aria2</a> will be used to download slide and video files.</p>
+
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>Clone infoq-download to your machine:</p>
+
+<div class="highlight highlight-bash"><pre>git clone https://github.com/myguidingstar/infoq-downloader
+<span class="nb">cd </span>infoq-downloader
+</pre></div>
+
+<p>Now run infoq-downloader with CasperJs+PhantomJS (in <code>infoq-downloader</code> directory):</p>
+
+<div class="highlight highlight-bash"><pre>casper ./lib/infoq-casper.js http://www.infoq.com/presentations/a-presentation-name
+</pre></div>
+
+<p>If you prefer SlimerJS, try this instead:</p>
+
+<div class="highlight highlight-bash"><pre>casper --engine<span class="o">=</span>slimerjs ./lib/infoq-casper.js http://www.infoq.com/presentations/a-presentation-name
+</pre></div>
+
+<p>After a while, you'll see something like:</p>
+
+<blockquote>
+<p>You can now run aria2c to download slides and video with:
+(download resume is enabled)
+aria2c -x 16 --auto-file-renaming=false -i a-presentation-name/aria2.txt</p>
+</blockquote>
+
+<p>Then just have arial2 download the files as instructed:</p>
+
+<div class="highlight highlight-bash"><pre>aria2c -x 16 --auto-file-renaming<span class="o">=</span><span class="nb">false</span> -i a-presentation-name/aria2.txt
+</pre></div>
+
+<h2>
+<a name="time-to-hack" class="anchor" href="#time-to-hack"><span class="octicon octicon-link"></span></a>Time to hack</h2>
+
+<p>InfoQ is written in <a href="https://github.com/chlorinejs">ChlorineJS</a>, a subset of Clojure that compiles to Javascript. You'll need <a href="http://leiningen.org">Leiningen</a> to compile it.</p>
+
+<p>Make changes to <code>src/infoq-casper.cl2</code> then:</p>
+
+<div class="highlight highlight-bash"><pre>lein cl2c auto compile
+</pre></div>
+
+<p>This will watch for changes and re-compile <code>*.cl2</code> files to Javascript.</p>
+
+<p>Or you may want to compile only once:</p>
+
+<div class="highlight highlight-bash"><pre>lein cl2c once compile
+</pre></div>
+
+<h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>Copyright © 2014 Hoang Minh Thang</p>
+
+<p>Distributed under the Eclipse Public License either version 1.0 or (at
+your option) any later version.</p>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="http://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		
+  </body>
+</html>
