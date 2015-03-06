@@ -31,11 +31,15 @@
   "Runs in InfoQ page's context to get data.
 Returns the data as a vector."
   []
-  [document.title
-   slides TIMES
-   (.. document
-       (querySelector "video > source")
-       (getAttribute "src"))])
+  ;; casperjs seems to throw exception when evaluation result contains null
+  ;; Use "" in those cases
+  [(or document.title "")
+   ;; javascript vars found in page body
+   slides times ;; TIMES
+   (or (.. document
+           (querySelector "video > source")
+           (getAttribute "src"))
+       "")])
 
 (def casper (. (require* "casper")
                (create casper-config)))
