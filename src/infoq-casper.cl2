@@ -101,7 +101,7 @@ to be included in local presentz HTML file."
 
 (defn slide->local
   "Local path for slide image."
-  [slide-url title]
+  [slide-url]
   (str "slides/" (url->name slide-url)))
 
 (defn video->aria2-lines
@@ -128,7 +128,7 @@ to be included in local presentz HTML file."
 (defn generate-html [title slide-urls video-url times page-title]
   (console.log (str "Generating HTML file..."))
   (->> (params->presentz title
-                         (map #(slide->local % title) slide-urls)
+                         (map #(slide->local %) slide-urls)
                          times
                          (url->name video-url))
        JSON.stringify
