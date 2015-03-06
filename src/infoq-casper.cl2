@@ -5,12 +5,19 @@
        "Mobile/8C148 "
        "Safari/6533.18.5"))
 
+(def iPhone-user-agent
+  (str "Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_2_1 like Mac OS X; da-dk) "
+       "AppleWebKit/533.17.9 (KHTML, like Gecko) "
+       "Version/5.0.2 "
+       "Mobile/8C148 "
+       "Safari/6533.18.5"))
+
 (def casper-config
   {:client-scripts []
    :page-settings
    {:load-images false
     :load-plugins false
-    :user-agent iPad-user-agent}})
+    :user-agent iPhone-user-agent}})
 
 (require fs)
 
