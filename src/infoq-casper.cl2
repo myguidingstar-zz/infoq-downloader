@@ -140,8 +140,12 @@ to be included in local presentz HTML file."
    (fn []
      (let [[page-title slide-urls times video-url]
            (this.evaluate get-contents)
-           title (url->name url)]
+           title (url->name url)
+           page-title (or page-title title)
+           video-url (or video-url "unknown.video.url")]
        (console.log (str "Entering " title "..."))
+       (when (= video-url "unknown.video.url")
+         (casper.echo "Unknown video url. You need to figure it out yourself"))
        (prepare title)
        (generate-aria2 title slide-urls video-url)
        (generate-html title slide-urls video-url times page-title)
