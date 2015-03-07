@@ -108,7 +108,7 @@ to be included in local presentz HTML file."
 (defn slide->local
   "Local path for slide image."
   [slide-url]
-  (str "slides/" (url->name slide-url)))
+  (str "slides/" (url->name (change-extension slide-url "swf" "png"))))
 
 (defn video->aria2-lines
   "Lines to include in arial2c input file to download a given video."
@@ -136,7 +136,7 @@ to be included in local presentz HTML file."
   (->> (params->presentz title
                          (map #(slide->local %) slide-urls)
                          times
-                         (url->name video-url))
+                         (url->name  (change-extension video-url "flv" "webm")))
        JSON.stringify
        (merge-data (slurp "template.html"))
        (merge-title page-title)
