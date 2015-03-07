@@ -99,6 +99,12 @@ to be included in local presentz HTML file."
 (defn url->file-extension [url]
   (last (.split url ".")))
 
+(defn change-extension [file-name old-extension new-extension]
+  (let [position (.lastIndexOf file-name (str "." old-extension))]
+    (if (= -1 position)
+      file-name
+      (str (.substr file-name 0 position) "." new-extension))))
+
 (defn slide->local
   "Local path for slide image."
   [slide-url]
