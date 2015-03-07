@@ -11,5 +11,5 @@ cd "$1"
 for video in *.flv
 do
     echo Converting video "$video"
-    avconv -threads auto -i "$video" "${video%.flv}.webm"
+    avconv -threads auto -i "$video" "${video%.flv}.webm" && rm "$video"
 done
