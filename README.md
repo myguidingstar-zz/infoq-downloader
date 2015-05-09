@@ -5,12 +5,19 @@ Download talks from Infoq to view offline.
 ## Prerequisites
 
 You will need [CasperJS][1] with either [PhantomJS][2] or [SlimerJS][3] above installed.
+
 Also, [Aria2][4] will be used to download slide and video files.
+
+If the slides are .swf files, you need `swfrender` from
+SWFTools[5]. Videos of .flv format will be converted to `.webm` using
+`avconv`[6].
 
 [1]: http://casperjs.org
 [2]: http://phantomjs.org
 [3]: http://slimerjs.org
 [4]: http://aria2.sourceforge.net
+[5]: http://wiki.swftools.org/wiki/Swfrender
+[6]: https://libav.org/avconv.html
 
 ## Usage
 
