@@ -80,7 +80,7 @@ lein cl2c once compile
 
 ## License
 
-Copyright © 2014 Hoang Minh Thang
+Copyright © 2014-2015 Hoang Minh Thang
 
 Distributed under the Eclipse Public License either version 1.0 or (at
 your option) any later version.
