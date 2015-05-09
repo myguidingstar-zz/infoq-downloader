@@ -27,6 +27,12 @@
 (defn slurp [file]
   (fs.read file))
 
+(defn abs-url?
+  "Returns true if the given URL starts with http(s)://"
+  [url]
+  (or (starts-with url "http://")
+      (starts-with url "https://")))
+
 (defn get-contents
   "Runs in InfoQ page's context to get data.
 Returns the data as a vector."
