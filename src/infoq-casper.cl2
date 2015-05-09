@@ -27,6 +27,9 @@
 (defn slurp [file]
   (fs.read file))
 
+(defn starts-with [s prefix]
+  (=== 0 (.indexOf s prefix)))
+
 (defn abs-url?
   "Returns true if the given URL starts with http(s)://"
   [url]
