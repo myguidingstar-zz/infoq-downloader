@@ -9,8 +9,8 @@ You will need [CasperJS][1] with either [PhantomJS][2] or [SlimerJS][3] above in
 Also, [Aria2][4] will be used to download slide and video files.
 
 If the slides are .swf files, you need `swfrender` from
-SWFTools[5]. Videos of .flv format will be converted to `.webm` using
-`avconv`[6].
+[SWFTools][5]. Videos of .flv format will be converted to `.webm` using
+[`avconv`][6].
 
 [1]: http://casperjs.org
 [2]: http://phantomjs.org
@@ -59,10 +59,11 @@ and videos to standard formats:
 
 ## Time to hack
 
-InfoQ is written in [ChlorineJS][5], a subset of Clojure that compiles to Javascript. You'll need [Leiningen][6] to compile it.
+InfoQ is written in [ChlorineJS][7], a subset of Clojure that compiles
+to Javascript. You'll need [Leiningen][8] to compile it.
 
-[5]: https://github.com/chlorinejs
-[6]: http://leiningen.org
+[7]: https://github.com/chlorinejs
+[8]: http://leiningen.org
 
 Make changes to `src/infoq-casper.cl2` then:
 
