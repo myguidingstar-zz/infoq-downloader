@@ -30,11 +30,19 @@
 (defn starts-with [s prefix]
   (=== 0 (.indexOf s prefix)))
 
-(defn abs-url?
-  "Returns true if the given URL starts with http(s)://"
+(defn ->abs-url
+  "Coerce a possiblly relative url to absolute."
   [url]
-  (or (starts-with url "http://")
-      (starts-with url "https://")))
+  (cond
+    (or (starts-with url "http://")
+        (starts-with url "https://"))
+    url
+
+    (starts-with url "//")
+    (str "http:" url)
+
+    :default
+    (str "http://www.infoq.com" url)))
 
 (defn get-contents
   "Runs in InfoQ page's context to get data.
