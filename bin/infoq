@@ -1,0 +1,43 @@
+#!/bin/bash
+
+## configuration
+default_outdir=~/Videos
+
+## paths
+script=$(basename "$BASH_SOURCE")
+script_dir=~/vendor/infoq-downloader
+
+## usage
+usage="Usage
+    $script http://www.infoq.com/presentations/j-language
+    $script http://www.infoq.com/presentations/j-language output-dir"
+
+if [ "$1" == "" ]
+then
+    echo "$usage"
+    exit 1
+fi
+
+engine_arg="--engine=phantomjs"
+
+if [ $script == "infoq-slimer" ]
+then
+    echo Using slimerjs engine
+    engine_arg="--engine=slimerjs"
+fi
+
+cd "$script_dir"
+subdir=${1##*/}
+
+# export SLIMERJSLAUNCHER=/usr/bin/firefox
+
+casperjs $engine_arg "lib/infoq-casper.js" $1 && \
+    # aria2c -x 16 --auto-file-renaming=false -i "${subdir}/aria2.txt" && \
+    # "bin/infoq-no-flash" "`pwd`/${subdir}"
+
+if [ "$2" != "" ]
+then
+    mv "$subdir/" $2
+else
+    mv "$subdir/" "$default_outdir"
+fi
