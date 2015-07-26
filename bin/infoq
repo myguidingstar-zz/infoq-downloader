@@ -32,8 +32,8 @@ subdir=${1##*/}
 # export SLIMERJSLAUNCHER=/usr/bin/firefox
 
 casperjs $engine_arg "lib/infoq-casper.js" $1 && \
-    # aria2c -x 16 --auto-file-renaming=false -i "${subdir}/aria2.txt" && \
-    # "bin/infoq-no-flash" "`pwd`/${subdir}"
+    aria2c -x 16 --auto-file-renaming=false -i "${subdir}/aria2.txt" && \
+    "bin/infoq-no-flash" "`pwd`/${subdir}"
 
 if [ "$2" != "" ]
 then
