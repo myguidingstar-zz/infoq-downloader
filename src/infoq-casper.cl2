@@ -130,13 +130,13 @@ to be included in local presentz HTML file."
 (defn video->aria2-lines
   "Lines to include in arial2c input file to download a given video."
   [video-url title]
-  (str video-url "
+  (str (->abs-url video-url) "
   dir=" title))
 
 (defn slide->aria2-lines
   "Lines to include in arial2c input file to download a given slide."
   [slide-url title]
-  (str (when (not (abs-url? slide-url)) "http://www.infoq.com") slide-url "
+  (str (->abs-url slide-url) "
   dir=" title "/slides"))
 
 (defn generate-aria2 [title slide-urls video-url]
