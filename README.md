@@ -50,11 +50,11 @@ Then just have arial2 download the files as instructed:
 aria2c -x 16 --auto-file-renaming=false -i a-presentation-name/aria2.txt
 ```
 
-Then the provided `no-flash.sh` should be used to convert flash slides
-and videos to standard formats:
+Then the provided `infoq-no-flash` should be used to convert flash
+slides and videos to standard formats:
 
 ```bash
-./no-flash a-presentation-name # the directory of newly downloaded presentation
+./infoq-no-flash a-presentation-name # the directory of newly downloaded presentation
 ```
 
 ## Time to hack
